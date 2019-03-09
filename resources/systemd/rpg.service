@@ -1,0 +1,13 @@
+[Unit]
+Description=Gunicorn instance to serve RPG
+After=network.target
+
+[Service]
+User=YOUR-USERNAME
+Group=www-data
+WorkingDirectory=/home/YOUR-USERNAME/rpg
+Environment='APP_SECRET_KEY=YOUR-SECRET-KEY'
+ExecStart=/bin/bash -c 'cd /home/YOUR-USERNAME/rpg && source /home/YOUR-USERNAME/miniconda3/bin/activate rpg && gunicorn --workers 3 --bind unix:rpg.sock -m 007 wsgi:app'
+
+[Install]
+WantedBy=multi-user.target

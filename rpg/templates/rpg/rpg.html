@@ -1,0 +1,153 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="valign-wrapper" id="showcase">
+    <div class="container" id="content">
+        <div class="row">
+            <div class="col s12">
+                <div class="container">
+                    <div class="card grey darken-3">
+                        <div class="card-content">
+                            <div class="row">
+                                <div class="col s12">
+                                    <h3 class="white-text">
+                                        <span id="header-text">Password Generator</span> <i class="fas fa-lock white-text right"></i>
+                                    </h3>
+                                </div>
+                            </div>
+                    
+                            <form action="/generate-password" method="POST" id="generate-password-form">
+                                <div id="pwgen-options">
+                                    <div class="row">
+                                        <div class="col s12">
+                                            <p class="flow-text white-text">
+                                                Select the characters to include in your password. Select all options for maximum security.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row no-padding-bottom">
+                                        <div class="col s12 m6 l6">
+                                            <div class="row">
+                                                <div class="col s12">
+                                                    <label for="uppercase">
+                                                        <input type="checkbox" id="uppercase" name="uppercase" class="filled-in" checked>
+                                                        <span class="flow-text white-text">Uppercase</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col s12">
+                                                    <label for="digits">
+                                                        <input type="checkbox" id="digits" name="digits" class="filled-in">
+                                                        <span class="flow-text white-text">Digits</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col s12 m6 l6">
+                                            <div class="row">
+                                                <div class="col s12">
+                                                    <label for="lowercase">
+                                                        <input type="checkbox" id="lowercase" name="lowercase" class="filled-in">
+                                                        <span class="flow-text white-text">Lowercase</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="row">
+                                                <div class="col s12">
+                                                    <label for="punctuation">
+                                                        <input type="checkbox" id="punctuation" name="punctuation" class="filled-in">
+                                                        <span class="flow-text white-text">Punctuation</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <div class="col s12">
+                                            <p class="flow-text white-text">
+                                                Select the length of your new password. A longer password is always more secure.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row no-padding-bottom">
+                                        <div class="col s6 m6 l6">
+                                            <div class="row">
+                                                <div class="col s12">
+                                                    <label>
+                                                        <input class="with-gap" name="pw_length" value="8" type="radio" checked />
+                                                        <span class="white-text">8</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col s12">
+                                                    <label>
+                                                        <input class="with-gap" name="pw_length" value="16" type="radio" />
+                                                        <span class="white-text">16</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    
+                                        <div class="col s6 m6 l6">
+                                            <div class="row">
+                                                <div class="col s12">
+                                                    <label>
+                                                        <input class="with-gap" name="pw_length" value="32" type="radio" />
+                                                        <span class="white-text">32</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col s12">
+                                                    <label>
+                                                        <input class="with-gap" name="pw_length" value="64" type="radio" />
+                                                        <span class="white-text">64</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row no-padding-bottom grey darken-3" style="display: none;" id="display-password-row">
+                                        <div class="col s12">
+                                            <p class="flow-text white-text">Your Password:</p>
+                                        </div>
+
+                                        <div class="col s12 waves-effect waves-purple" onclick="copyPassword()">
+                                            <div class="input-field no-padding">
+                                                <textarea class="white-text materialize-textarea no-padding-bottom" onmouseover="" disabled id="display-password"></textarea>
+                                                <span class="helper-text white-text">Click to Copy</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <div class="col s12">
+                                            <div class="section"></div>
+                                            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+                                            <button class="btn-flat right purple darken-1 white-text waves-effect waves-purple hoverchange">Generate</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/static/js/app.js"></script>
+
+{% endblock %}
