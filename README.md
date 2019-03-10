@@ -1,7 +1,7 @@
 # RPG (Random Password Generator)
 Powered by [Virtualzero](https://virtualzero.net)
 
-RPG is a Flask web application used to create strong, secure passwords. RPG leverages the Python secrets module to generte cryptographically strong, random strings suitable for passwords, user authentication, and security tokens.
+RPG is a Flask web application used to create strong, secure passwords. RPG leverages the Python secrets module to generate cryptographically strong, random strings suitable for passwords, user authentication, and security tokens.
 
 #### Installation
 Clone the repository:
